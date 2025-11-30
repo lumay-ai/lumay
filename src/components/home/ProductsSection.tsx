@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Bot, Workflow, Activity, TrendingUp, Building2, ShieldCheck, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ParallaxIcons } from "@/components/shared/ParallaxIcons";
 
 const products = [
   {
@@ -49,8 +50,9 @@ const products = [
 
 export function ProductsSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
+      <ParallaxIcons sectionOffset={800} density="medium" direction="mixed" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm uppercase tracking-wider">Products</span>

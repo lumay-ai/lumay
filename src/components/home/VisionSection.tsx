@@ -1,4 +1,5 @@
 import { Gem, Award, Rocket } from "lucide-react";
+import { ParallaxIcons } from "@/components/shared/ParallaxIcons";
 
 const visionItems = [
   {
@@ -20,8 +21,9 @@ const visionItems = [
 
 export function VisionSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/20 to-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-secondary/20 to-background relative overflow-hidden">
+      <ParallaxIcons sectionOffset={2400} density="low" direction="down" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm uppercase tracking-wider">Our Vision & Approach</span>

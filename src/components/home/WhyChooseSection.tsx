@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import { ParallaxIcons } from "@/components/shared/ParallaxIcons";
 
 const features = [
   "AI That Works, Not Just Talks",
@@ -13,6 +14,7 @@ const features = [
 export function WhyChooseSection() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
+      <ParallaxIcons sectionOffset={3200} density="medium" direction="mixed" />
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
       
