@@ -1,13 +1,56 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import lumayLogo from "@/assets/lumay-logo.png";
 
 export function HeroSection() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20" />
       <div className="hero-glow" />
+      
+      {/* Parallax Logo - moves from top to bottom on scroll */}
+      <div 
+        className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-0 opacity-10"
+        style={{
+          top: `${-100 + scrollY * 0.5}px`,
+          transform: `translateX(-50%) scale(${1 + scrollY * 0.0005})`,
+          transition: 'transform 0.1s ease-out',
+        }}
+      >
+        <img 
+          src={lumayLogo} 
+          alt="" 
+          className="w-[600px] h-[600px] object-contain blur-sm"
+        />
+      </div>
+
+      {/* Secondary parallax logo - slower movement */}
+      <div 
+        className="absolute right-10 pointer-events-none z-0 opacity-5"
+        style={{
+          top: `${50 + scrollY * 0.3}px`,
+          transform: `rotate(${scrollY * 0.05}deg)`,
+        }}
+      >
+        <img 
+          src={lumayLogo} 
+          alt="" 
+          className="w-[300px] h-[300px] object-contain"
+        />
+      </div>
       
       {/* Animated gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />

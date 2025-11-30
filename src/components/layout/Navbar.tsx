@@ -11,6 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import lumayLogo from "@/assets/lumay-logo.png";
 
 const products = [
   { name: "SmartAssist", description: "AI-Driven Virtual Assistant", href: "/products#smartassist" },
@@ -39,11 +40,15 @@ export function Navbar() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="font-display font-bold text-primary-foreground text-xl">L</span>
-            </div>
-            <span className="font-display font-bold text-xl text-foreground">LuMay</span>
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src={lumayLogo} 
+              alt="LuMay AI Logo" 
+              className="w-12 h-12 object-contain"
+            />
+            <span className="font-display font-bold text-xl text-foreground">
+              Lu<span className="text-primary">May</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
