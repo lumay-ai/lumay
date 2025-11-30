@@ -63,7 +63,7 @@ export function HeroSection() {
         
         // 3D depth calculations
         const depthScale = 1 - (item.z / 300);
-        const depthOpacity = 0.06 + (depthScale * 0.14);
+        const baseOpacity = 0.06 + (depthScale * 0.14);
         const depthBlur = item.z > 140 ? 1.5 : item.z > 100 ? 0.5 : 0;
         
         // Mouse parallax - closer objects react more
@@ -76,21 +76,34 @@ export function HeroSection() {
         const rotateY = -item.rotateBase + (scrollY * 0.02 * direction) + ((mousePos.x - 0.5) * 15);
         const rotateZ = scrollY * 0.01 * direction;
         
+        // Proximity-based hover effect
+        const iconCenterX = item.x / 100;
+        const iconCenterY = item.y / 100;
+        const distance = Math.sqrt(
+          Math.pow(mousePos.x - iconCenterX, 2) + 
+          Math.pow(mousePos.y - iconCenterY, 2)
+        );
+        const proximityThreshold = 0.12;
+        const proximityFactor = Math.max(0, 1 - distance / proximityThreshold);
+        const hoverScale = 1 + proximityFactor * 0.5;
+        const hoverOpacity = baseOpacity + proximityFactor * 0.4;
+        const hoverGlow = proximityFactor * 25;
+        
         return (
           <div
             key={index}
-            className="absolute pointer-events-none text-primary transition-transform duration-150 ease-out"
+            className="absolute pointer-events-none text-primary transition-all duration-100 ease-out"
             style={{
               left: `${item.x}%`,
               top: `${item.y}%`,
-              opacity: depthOpacity,
-              filter: depthBlur ? `blur(${depthBlur}px)` : 'none',
+              opacity: hoverOpacity,
+              filter: `blur(${depthBlur}px) drop-shadow(0 0 ${hoverGlow}px hsl(var(--primary)))`,
               transform: `
                 translate3d(${mouseOffsetX}px, ${mouseOffsetY + yOffset}px, ${item.z}px)
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
                 rotateZ(${rotateZ}deg)
-                scale(${depthScale + scrollY * 0.0001})
+                scale(${(depthScale + scrollY * 0.0001) * hoverScale})
               `,
               transformStyle: "preserve-3d",
             }}

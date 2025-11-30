@@ -111,9 +111,9 @@ export function ParallaxIcons({
           index % 2 === 0 ? 1 : -1;
         
         // 3D depth calculations
-        const depthScale = 1 - (pos.z / 400); // Further = smaller
-        const depthOpacity = 0.08 + (depthScale * 0.15); // Further = more transparent
-        const depthBlur = pos.z > 150 ? 1 : 0; // Blur far objects
+        const depthScale = 1 - (pos.z / 400);
+        const baseOpacity = 0.08 + (depthScale * 0.15);
+        const depthBlur = pos.z > 150 ? 1 : 0;
         
         // Mouse parallax - closer objects move more
         const mouseInfluence = (1 - pos.z / 300) * 30;
@@ -124,20 +124,33 @@ export function ParallaxIcons({
         const scrollRotateX = pos.rotateX + (adjustedScroll * 0.02 * directionMultiplier);
         const scrollRotateY = pos.rotateY + (adjustedScroll * 0.015 * directionMultiplier);
         
+        // Proximity-based hover effect
+        const iconCenterX = pos.x / 100;
+        const iconCenterY = pos.y / 100;
+        const distance = Math.sqrt(
+          Math.pow(mousePos.x - iconCenterX, 2) + 
+          Math.pow(mousePos.y - iconCenterY, 2)
+        );
+        const proximityThreshold = 0.15;
+        const proximityFactor = Math.max(0, 1 - distance / proximityThreshold);
+        const hoverScale = 1 + proximityFactor * 0.4;
+        const hoverOpacity = baseOpacity + proximityFactor * 0.3;
+        const hoverGlow = proximityFactor * 20;
+        
         return (
           <div
             key={index}
-            className={`absolute ${item.color} transition-all duration-200 ease-out`}
+            className={`absolute ${item.color} transition-all duration-150 ease-out`}
             style={{
               left: `${pos.x}%`,
               top: `${pos.y}%`,
-              opacity: depthOpacity,
-              filter: depthBlur ? `blur(${depthBlur}px)` : 'none',
+              opacity: hoverOpacity,
+              filter: `blur(${depthBlur}px) drop-shadow(0 0 ${hoverGlow}px currentColor)`,
               transform: `
                 translate3d(${mouseOffsetX}px, ${mouseOffsetY + adjustedScroll * directionMultiplier}px, ${pos.z}px)
                 rotateX(${scrollRotateX}deg)
                 rotateY(${scrollRotateY}deg)
-                scale(${depthScale})
+                scale(${depthScale * hoverScale})
               `,
               transformStyle: "preserve-3d",
             }}
