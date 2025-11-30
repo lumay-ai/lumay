@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 const products = [
   {
     id: "smartassist",
+    href: "/products/smartassist",
     icon: Bot,
     name: "SmartAssist",
     tagline: "Your AI-Driven Virtual Assistant",
@@ -15,6 +16,7 @@ const products = [
   },
   {
     id: "smartflow",
+    href: "/products/smartflow",
     icon: Workflow,
     name: "SmartFlow",
     tagline: "Low-Code/No-Code Orchestration Platform",
@@ -23,6 +25,7 @@ const products = [
   },
   {
     id: "smartsense",
+    href: "/products/smartsense",
     icon: Activity,
     name: "SmartSense",
     tagline: "Real-Time Anomaly Detection",
@@ -31,6 +34,7 @@ const products = [
   },
   {
     id: "smarttrends",
+    href: "/products/smarttrends",
     icon: TrendingUp,
     name: "SmartTrends",
     tagline: "Predictive Analytics & Forecasting",
@@ -38,7 +42,8 @@ const products = [
     features: ["Predictive Models", "Trend Analysis", "Custom Dashboards", "Automated Reports", "What-if Scenarios", "Data Visualization"],
   },
   {
-    id: "smartdynamics",
+    id: "smartdynamics365",
+    href: "/products/smartdynamics365",
     icon: Building2,
     name: "SmartDynamics365",
     tagline: "AI-Powered Business Automation",
@@ -46,7 +51,8 @@ const products = [
     features: ["D365 Integration", "CRM Copilot", "Quote Automation", "Sales Intelligence", "Customer Insights", "Process Optimization"],
   },
   {
-    id: "compliance",
+    id: "smartcompliance",
+    href: "/products/smartcompliance",
     icon: ShieldCheck,
     name: "SmartOCG Compliance",
     tagline: "AI Compliance & Risk Management",
@@ -55,6 +61,7 @@ const products = [
   },
   {
     id: "smartcall",
+    href: "/products/smartcall",
     icon: Phone,
     name: "SmartCall",
     tagline: "Autonomous AI Voice Agent",
@@ -62,7 +69,8 @@ const products = [
     features: ["Natural Voice AI", "Multi-language Support", "Call Analytics", "CRM Integration", "Smart Escalation", "Quality Monitoring"],
   },
   {
-    id: "translation",
+    id: "smarttranslation",
+    href: "/products/smarttranslation",
     icon: Globe,
     name: "SmartTranslation",
     tagline: "AI-Powered Language Services",
@@ -125,12 +133,17 @@ export default function Products() {
                     ))}
                   </div>
 
-                  <Button variant="hero" asChild>
-                    <Link to="/contact">
-                      Request Demo
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
+                  <div className="flex flex-wrap gap-4">
+                    <Button variant="hero" asChild>
+                      <Link to={product.href}>
+                        Learn More
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button variant="heroOutline" asChild>
+                      <Link to="/contact">Request Demo</Link>
+                    </Button>
+                  </div>
                 </div>
 
                 <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>

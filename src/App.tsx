@@ -13,6 +13,16 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
+// Product Pages
+import SmartAssist from "./pages/products/SmartAssist";
+import SmartFlow from "./pages/products/SmartFlow";
+import SmartSense from "./pages/products/SmartSense";
+import SmartTrends from "./pages/products/SmartTrends";
+import SmartDynamics365 from "./pages/products/SmartDynamics365";
+import SmartCompliance from "./pages/products/SmartCompliance";
+import SmartCall from "./pages/products/SmartCall";
+import SmartTranslation from "./pages/products/SmartTranslation";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +35,14 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/smartassist" element={<SmartAssist />} />
+            <Route path="/products/smartflow" element={<SmartFlow />} />
+            <Route path="/products/smartsense" element={<SmartSense />} />
+            <Route path="/products/smarttrends" element={<SmartTrends />} />
+            <Route path="/products/smartdynamics365" element={<SmartDynamics365 />} />
+            <Route path="/products/smartcompliance" element={<SmartCompliance />} />
+            <Route path="/products/smartcall" element={<SmartCall />} />
+            <Route path="/products/smarttranslation" element={<SmartTranslation />} />
             <Route path="/services" element={<Services />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/about" element={<About />} />
