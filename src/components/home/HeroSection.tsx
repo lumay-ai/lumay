@@ -1,8 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Brain, Cpu, Bot, Zap, Network, Atom, CircuitBoard, Binary, Cog } from "lucide-react";
 import { useEffect, useState } from "react";
-import lumayLogo from "@/assets/lumay-logo.png";
+
+const floatingIcons = [
+  { Icon: Brain, x: 5, y: 15, size: 40, speed: 0.4, opacity: 0.15 },
+  { Icon: Cpu, x: 92, y: 20, size: 36, speed: 0.3, opacity: 0.12 },
+  { Icon: Bot, x: 8, y: 60, size: 44, speed: 0.5, opacity: 0.18 },
+  { Icon: Zap, x: 88, y: 55, size: 32, speed: 0.35, opacity: 0.14 },
+  { Icon: Network, x: 15, y: 80, size: 38, speed: 0.45, opacity: 0.16 },
+  { Icon: Atom, x: 85, y: 75, size: 42, speed: 0.25, opacity: 0.13 },
+  { Icon: CircuitBoard, x: 3, y: 40, size: 34, speed: 0.55, opacity: 0.15 },
+  { Icon: Binary, x: 95, y: 40, size: 30, speed: 0.4, opacity: 0.11 },
+  { Icon: Cog, x: 20, y: 30, size: 28, speed: 0.3, opacity: 0.12 },
+  { Icon: Sparkles, x: 80, y: 85, size: 36, speed: 0.5, opacity: 0.17 },
+];
 
 export function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -21,36 +33,27 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20" />
       <div className="hero-glow" />
       
-      {/* Parallax Logo - moves from top to bottom on scroll */}
-      <div 
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-0 opacity-10"
-        style={{
-          top: `${-100 + scrollY * 0.5}px`,
-          transform: `translateX(-50%) scale(${1 + scrollY * 0.0005})`,
-          transition: 'transform 0.1s ease-out',
-        }}
-      >
-        <img 
-          src={lumayLogo} 
-          alt="" 
-          className="w-[600px] h-[600px] object-contain blur-sm"
-        />
-      </div>
-
-      {/* Secondary parallax logo - slower movement */}
-      <div 
-        className="absolute right-10 pointer-events-none z-0 opacity-5"
-        style={{
-          top: `${50 + scrollY * 0.3}px`,
-          transform: `rotate(${scrollY * 0.05}deg)`,
-        }}
-      >
-        <img 
-          src={lumayLogo} 
-          alt="" 
-          className="w-[300px] h-[300px] object-contain"
-        />
-      </div>
+      {/* Parallax AI Icons */}
+      {floatingIcons.map((item, index) => {
+        const direction = index % 2 === 0 ? 1 : -1;
+        const yOffset = scrollY * item.speed * direction;
+        const rotation = scrollY * 0.05 * direction;
+        
+        return (
+          <div
+            key={index}
+            className="absolute pointer-events-none text-primary transition-transform duration-75"
+            style={{
+              left: `${item.x}%`,
+              top: `${item.y}%`,
+              opacity: item.opacity,
+              transform: `translateY(${yOffset}px) rotate(${rotation}deg) scale(${1 + scrollY * 0.0002})`,
+            }}
+          >
+            <item.Icon size={item.size} strokeWidth={1} />
+          </div>
+        );
+      })}
       
       {/* Animated gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />

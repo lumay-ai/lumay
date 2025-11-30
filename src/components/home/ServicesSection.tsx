@@ -3,6 +3,7 @@ import { ArrowRight, Brain, Shield, Blocks, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { ParallaxIcons } from "@/components/shared/ParallaxIcons";
 
 const services = [
   {
@@ -40,8 +41,9 @@ export function ServicesSection() {
   const activeServiceData = services.find(s => s.id === activeService);
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-background relative overflow-hidden">
+      <ParallaxIcons sectionOffset={1600} density="low" direction="up" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm uppercase tracking-wider">Services</span>
