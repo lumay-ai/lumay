@@ -1,36 +1,25 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { 
-  Brain, 
-  Cpu, 
-  Sparkles, 
-  Bot, 
-  Zap, 
-  Network, 
-  Atom, 
-  CircuitBoard,
-  Binary,
-  Cog,
-  Database,
-  Cloud,
-  Code,
-  Lightbulb
+  Brain, Cpu, Sparkles, Bot, Zap, Network, Atom, CircuitBoard,
+  Binary, Cog, Database, Cloud, Code, Lightbulb
 } from "lucide-react";
+import { useHoverSound } from "@/hooks/use-hover-sound";
 
 const icons = [
-  { Icon: Brain, color: "text-primary" },
-  { Icon: Cpu, color: "text-accent" },
-  { Icon: Sparkles, color: "text-primary" },
-  { Icon: Bot, color: "text-accent" },
-  { Icon: Zap, color: "text-primary" },
-  { Icon: Network, color: "text-accent" },
-  { Icon: Atom, color: "text-primary" },
-  { Icon: CircuitBoard, color: "text-accent" },
-  { Icon: Binary, color: "text-primary" },
-  { Icon: Cog, color: "text-accent" },
-  { Icon: Database, color: "text-primary" },
-  { Icon: Cloud, color: "text-accent" },
-  { Icon: Code, color: "text-primary" },
-  { Icon: Lightbulb, color: "text-accent" },
+  { Icon: Brain, color: "text-primary", freq: 600 },
+  { Icon: Cpu, color: "text-accent", freq: 800 },
+  { Icon: Sparkles, color: "text-primary", freq: 1000 },
+  { Icon: Bot, color: "text-accent", freq: 700 },
+  { Icon: Zap, color: "text-primary", freq: 1200 },
+  { Icon: Network, color: "text-accent", freq: 550 },
+  { Icon: Atom, color: "text-primary", freq: 900 },
+  { Icon: CircuitBoard, color: "text-accent", freq: 750 },
+  { Icon: Binary, color: "text-primary", freq: 650 },
+  { Icon: Cog, color: "text-accent", freq: 500 },
+  { Icon: Database, color: "text-primary", freq: 850 },
+  { Icon: Cloud, color: "text-accent", freq: 950 },
+  { Icon: Code, color: "text-primary", freq: 1100 },
+  { Icon: Lightbulb, color: "text-accent", freq: 1050 },
 ];
 
 interface ParallaxIconsProps {
@@ -56,7 +45,6 @@ const positions = [
   { x: 95, y: 8, z: 190, size: 30, speed: 0.32, rotateX: -12, rotateY: 12, bobSpeed: 3.6, bobAmount: 5 },
 ];
 
-// Particle configuration
 const particles = Array.from({ length: 20 }, (_, i) => ({
   x: Math.random() * 100,
   size: 2 + Math.random() * 3,
@@ -73,7 +61,9 @@ export function ParallaxIcons({
   const [scrollY, setScrollY] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const [time, setTime] = useState(0);
+  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { playHoverSound } = useHoverSound();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -87,7 +77,6 @@ export function ParallaxIcons({
       }
     };
 
-    // Animation loop for idle animations
     let animationId: number;
     const animate = () => {
       setTime(Date.now() / 1000);
@@ -109,7 +98,16 @@ export function ParallaxIcons({
   const selectedIcons = icons.slice(0, iconCount);
   const selectedPositions = positions.slice(0, iconCount);
 
-  // Calculate icon positions for neural network lines
+  // Check for hover and play sound
+  const checkHover = useCallback((index: number, proximityFactor: number) => {
+    if (proximityFactor > 0.5 && hoveredIcon !== index) {
+      setHoveredIcon(index);
+      playHoverSound(selectedIcons[index].freq, 0.15);
+    } else if (proximityFactor <= 0.3 && hoveredIcon === index) {
+      setHoveredIcon(null);
+    }
+  }, [hoveredIcon, playHoverSound, selectedIcons]);
+
   const iconPositions = selectedPositions.map((pos, index) => {
     const adjustedScroll = (scrollY - sectionOffset) * pos.speed;
     const directionMultiplier = direction === "down" ? 1 : direction === "up" ? -1 : index % 2 === 0 ? 1 : -1;
@@ -122,7 +120,6 @@ export function ParallaxIcons({
     };
   });
 
-  // Generate neural network connections
   const connections: { from: number; to: number; distance: number }[] = [];
   for (let i = 0; i < iconPositions.length; i++) {
     for (let j = i + 1; j < iconPositions.length; j++) {
@@ -141,16 +138,24 @@ export function ParallaxIcons({
       className="absolute inset-0 pointer-events-none overflow-hidden"
       style={{ perspective: "1000px", perspectiveOrigin: "50% 50%" }}
     >
-      {/* Neural network connecting lines */}
+      {/* Neural network with electricity effect */}
       <svg className="absolute inset-0 w-full h-full">
+        <defs>
+          <linearGradient id="electricGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          </linearGradient>
+        </defs>
         {connections.map((conn, idx) => {
           const from = iconPositions[conn.from];
           const to = iconPositions[conn.to];
-          const pulseOffset = (time * 2 + idx) % 1;
-          const lineOpacity = 0.15 * (1 - conn.distance / 40);
+          const lineOpacity = 0.2 * (1 - conn.distance / 40);
+          const dashOffset = (time * 50 + idx * 20) % 40;
           
           return (
             <g key={idx}>
+              {/* Base line */}
               <line
                 x1={`${from.x}%`}
                 y1={`${from.y}%`}
@@ -158,15 +163,34 @@ export function ParallaxIcons({
                 y2={`${to.y}%`}
                 stroke="hsl(var(--primary))"
                 strokeWidth="1"
-                opacity={lineOpacity}
+                opacity={lineOpacity * 0.5}
               />
-              {/* Pulse effect */}
-              <circle
-                cx={`${from.x + (to.x - from.x) * pulseOffset}%`}
-                cy={`${from.y + (to.y - from.y) * pulseOffset}%`}
-                r="3"
-                fill="hsl(var(--primary))"
-                opacity={lineOpacity * 2 * Math.sin(pulseOffset * Math.PI)}
+              {/* Electricity effect */}
+              <line
+                x1={`${from.x}%`}
+                y1={`${from.y}%`}
+                x2={`${to.x}%`}
+                y2={`${to.y}%`}
+                stroke="hsl(var(--primary))"
+                strokeWidth="2"
+                strokeDasharray="8 12"
+                strokeDashoffset={dashOffset}
+                opacity={lineOpacity}
+                strokeLinecap="round"
+              />
+              {/* Bright pulse */}
+              <line
+                x1={`${from.x}%`}
+                y1={`${from.y}%`}
+                x2={`${to.x}%`}
+                y2={`${to.y}%`}
+                stroke="hsl(var(--primary))"
+                strokeWidth="3"
+                strokeDasharray="4 36"
+                strokeDashoffset={-dashOffset * 1.5}
+                opacity={lineOpacity * 1.5}
+                filter="blur(1px)"
+                strokeLinecap="round"
               />
             </g>
           );
@@ -204,14 +228,12 @@ export function ParallaxIcons({
         const mouseOffsetX = (mousePos.x - 0.5) * mouseInfluence;
         const mouseOffsetY = (mousePos.y - 0.5) * mouseInfluence;
         
-        // Idle animations
         const idleBob = Math.sin(time * pos.bobSpeed + index) * pos.bobAmount;
         const idleRotate = Math.sin(time * 0.5 + index * 0.7) * 5;
         
         const scrollRotateX = pos.rotateX + (adjustedScroll * 0.02 * directionMultiplier);
         const scrollRotateY = pos.rotateY + (adjustedScroll * 0.015 * directionMultiplier) + idleRotate;
         
-        // Proximity hover
         const iconCenterX = pos.x / 100;
         const iconCenterY = pos.y / 100;
         const distance = Math.sqrt(
@@ -220,11 +242,13 @@ export function ParallaxIcons({
         );
         const proximityThreshold = 0.15;
         const proximityFactor = Math.max(0, 1 - distance / proximityThreshold);
+        
+        // Check for hover sound
+        checkHover(index, proximityFactor);
+        
         const hoverScale = 1 + proximityFactor * 0.4;
         const hoverOpacity = baseOpacity + proximityFactor * 0.3;
         const hoverGlow = proximityFactor * 20;
-        
-        // Reduce idle animation when hovered
         const effectiveBob = idleBob * (1 - proximityFactor);
         
         return (
@@ -250,7 +274,7 @@ export function ParallaxIcons({
         );
       })}
       
-      {/* Floating glow orbs */}
+      {/* Glow orbs */}
       <div 
         className="absolute w-32 h-32 rounded-full bg-primary/10 blur-2xl"
         style={{
