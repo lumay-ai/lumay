@@ -127,7 +127,7 @@ export function HeroSection() {
             <item.Icon 
               size={item.size} 
               strokeWidth={1}
-              className="drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+              className="drop-shadow-[0_0_10px_rgba(0,201,81,0.3)]"
             />
           </div>
         );
