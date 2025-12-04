@@ -186,8 +186,8 @@ export function HeroSection() {
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            SmartAssist is an AI-native virtual assistant that instantly answers questions, 
-            solves problems, and executes workflows using your company's data.
+            Lumay is an enterprise agentic AI platform that transforms your business with intelligent 
+            workflow automation, AI-powered virtual assistants, and seamless data integration.
           </p>
 
           {/* CTA Buttons */}
