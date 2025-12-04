@@ -162,9 +162,11 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            <span className="text-foreground">Intelligent Workflow</span>
+            <span className="text-gradient">Lumay</span>
             <br />
-            <span className="text-gradient">Automation</span>
+            <span className="text-foreground">Enterprise Agentic</span>
+            <br />
+            <span className="text-gradient">AI Platform</span>
           </h1>
 
           {/* Subheading */}
