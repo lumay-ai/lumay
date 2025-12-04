@@ -133,6 +133,21 @@ export function HeroSection() {
         );
       })}
       
+      {/* Energy Core - Pulsing center glow */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        {/* Outer radiating rings */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-primary/10 animate-energy-ring" style={{ animationDelay: '0s' }} />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-primary/15 animate-energy-ring" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-primary/20 animate-energy-ring" style={{ animationDelay: '1s' }} />
+        
+        {/* Core glow layers */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-energy-pulse" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-energy-pulse" style={{ animationDelay: '0.3s' }} />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/15 rounded-full blur-xl animate-energy-pulse" style={{ animationDelay: '0.6s' }} />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-primary/25 rounded-full blur-lg animate-energy-pulse" style={{ animationDelay: '0.9s' }} />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary/60 rounded-full blur-sm animate-energy-core" />
+      </div>
+      
       {/* 3D Floating glow orbs */}
       <div 
         className="absolute w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-pulse-glow"
