@@ -4,25 +4,29 @@ import { ArrowRight, Sparkles, Brain, Cpu, Bot, Zap, Network, Atom, CircuitBoard
 import { useEffect, useState, useRef } from "react";
 
 const floatingIcons = [
-  { Icon: Brain, x: 5, y: 12, z: 80, size: 44, speed: 0.5, rotateBase: 15 },
-  { Icon: Cpu, x: 92, y: 18, z: 160, size: 38, speed: 0.3, rotateBase: -20 },
-  { Icon: Bot, x: 8, y: 55, z: 60, size: 48, speed: 0.7, rotateBase: 10 },
-  { Icon: Zap, x: 90, y: 50, z: 120, size: 34, speed: 0.4, rotateBase: -15 },
-  { Icon: Network, x: 12, y: 78, z: 100, size: 40, speed: 0.55, rotateBase: 25 },
-  { Icon: Atom, x: 88, y: 72, z: 180, size: 46, speed: 0.25, rotateBase: -25 },
-  { Icon: CircuitBoard, x: 3, y: 35, z: 140, size: 36, speed: 0.45, rotateBase: 20 },
-  { Icon: Binary, x: 96, y: 38, z: 90, size: 32, speed: 0.6, rotateBase: -10 },
-  { Icon: Cog, x: 18, y: 25, z: 110, size: 30, speed: 0.35, rotateBase: 12 },
-  { Icon: Sparkles, x: 82, y: 85, z: 70, size: 42, speed: 0.65, rotateBase: -18 },
-  { Icon: Database, x: 6, y: 88, z: 150, size: 36, speed: 0.38, rotateBase: 22 },
+  { Icon: Brain, x: 5, y: 12, z: 80, size: 44, speed: 0.5, rotateBase: 15, startX: -100, startY: -50 },
+  { Icon: Cpu, x: 92, y: 18, z: 160, size: 38, speed: 0.3, rotateBase: -20, startX: 100, startY: -80 },
+  { Icon: Bot, x: 8, y: 55, z: 60, size: 48, speed: 0.7, rotateBase: 10, startX: -120, startY: 0 },
+  { Icon: Zap, x: 90, y: 50, z: 120, size: 34, speed: 0.4, rotateBase: -15, startX: 150, startY: 20 },
+  { Icon: Network, x: 12, y: 78, z: 100, size: 40, speed: 0.55, rotateBase: 25, startX: -80, startY: 100 },
+  { Icon: Atom, x: 88, y: 72, z: 180, size: 46, speed: 0.25, rotateBase: -25, startX: 120, startY: 80 },
+  { Icon: CircuitBoard, x: 3, y: 35, z: 140, size: 36, speed: 0.45, rotateBase: 20, startX: -150, startY: -30 },
+  { Icon: Binary, x: 96, y: 38, z: 90, size: 32, speed: 0.6, rotateBase: -10, startX: 130, startY: -40 },
+  { Icon: Cog, x: 18, y: 25, z: 110, size: 30, speed: 0.35, rotateBase: 12, startX: -60, startY: -100 },
+  { Icon: Sparkles, x: 82, y: 85, z: 70, size: 42, speed: 0.65, rotateBase: -18, startX: 100, startY: 120 },
+  { Icon: Database, x: 6, y: 88, z: 150, size: 36, speed: 0.38, rotateBase: 22, startX: -90, startY: 150 },
 ];
 
 export function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
+  const [isPoweredUp, setIsPoweredUp] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Trigger power-up animation after mount
+    const powerUpTimer = setTimeout(() => setIsPoweredUp(true), 100);
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -41,6 +45,7 @@ export function HeroSection() {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     
     return () => {
+      clearTimeout(powerUpTimer);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
@@ -56,7 +61,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20" />
       <div className="hero-glow" />
       
-      {/* 3D Parallax AI Icons */}
+      {/* 3D Parallax AI Icons with Power-Up Animation */}
       {floatingIcons.map((item, index) => {
         const direction = index % 2 === 0 ? 1 : -1;
         const yOffset = scrollY * item.speed * direction;
@@ -89,23 +94,34 @@ export function HeroSection() {
         const hoverOpacity = baseOpacity + proximityFactor * 0.4;
         const hoverGlow = proximityFactor * 25;
         
+        // Power-up entrance animation
+        const entranceDelay = index * 0.08;
+        const startOffsetX = isPoweredUp ? 0 : item.startX;
+        const startOffsetY = isPoweredUp ? 0 : item.startY;
+        const entranceOpacity = isPoweredUp ? hoverOpacity : 0;
+        const entranceScale = isPoweredUp ? 1 : 0.3;
+        const entranceRotate = isPoweredUp ? 0 : 180;
+        
         return (
           <div
             key={index}
-            className="absolute pointer-events-none text-primary transition-all duration-100 ease-out"
+            className="absolute pointer-events-none text-primary"
             style={{
               left: `${item.x}%`,
               top: `${item.y}%`,
-              opacity: hoverOpacity,
-              filter: `blur(${depthBlur}px) drop-shadow(0 0 ${hoverGlow}px hsl(var(--primary)))`,
+              opacity: entranceOpacity,
+              filter: `blur(${depthBlur}px) drop-shadow(0 0 ${isPoweredUp ? hoverGlow : 30}px hsl(var(--primary)))`,
               transform: `
-                translate3d(${mouseOffsetX}px, ${mouseOffsetY + yOffset}px, ${item.z}px)
+                translate3d(${mouseOffsetX + startOffsetX}px, ${mouseOffsetY + yOffset + startOffsetY}px, ${item.z}px)
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
-                rotateZ(${rotateZ}deg)
-                scale(${(depthScale + scrollY * 0.0001) * hoverScale})
+                rotateZ(${rotateZ + entranceRotate}deg)
+                scale(${(depthScale + scrollY * 0.0001) * hoverScale * entranceScale})
               `,
               transformStyle: "preserve-3d",
+              transition: isPoweredUp 
+                ? `opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${entranceDelay}s, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1) ${entranceDelay}s, filter 0.1s ease-out`
+                : 'none',
             }}
           >
             <item.Icon 
