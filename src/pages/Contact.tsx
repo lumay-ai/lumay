@@ -7,29 +7,25 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-
 export default function Contact() {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
     toast({
       title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
+      description: "We'll get back to you within 24 hours."
     });
-    
     setIsSubmitting(false);
     (e.target as HTMLFormElement).reset();
   };
-
-  return (
-    <Layout>
+  return <Layout>
       <Helmet>
         <title>Contact LuMay - Request Demo & Get in Touch</title>
         <meta name="description" content="Contact LuMay for AI solutions and enterprise automation. Request a demo, get pricing, or speak with our experts. Phone: +1 (310) 810-1745" />
@@ -90,11 +86,7 @@ export default function Contact() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="interest">Area of Interest</Label>
-                  <select
-                    id="interest"
-                    className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    required
-                  >
+                  <select id="interest" className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" required>
                     <option value="">Select an option</option>
                     <option value="smartassist">SmartAssist</option>
                     <option value="smartflow">SmartFlow</option>
@@ -108,12 +100,7 @@ export default function Contact() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project and goals..."
-                    className="min-h-[120px]"
-                    required
-                  />
+                  <Textarea id="message" placeholder="Tell us about your project and goals..." className="min-h-[120px]" required />
                 </div>
                 
                 <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
@@ -154,8 +141,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:info@lumay.ai" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@lumay.ai
+                    <a className="text-muted-foreground hover:text-primary transition-colors" href="mailto:sales@lumay.ai">
+                      sales@lumay.ai
                     </a>
                   </div>
                 </div>
@@ -182,6 +169,5 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
