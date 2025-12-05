@@ -14,12 +14,14 @@ import { cn } from "@/lib/utils";
 import lumayLogo from "@/assets/lumay-logo.png";
 
 const products = [
-  { name: "SmartAssist", description: "AI-Driven Virtual Assistant", href: "/products#smartassist" },
-  { name: "SmartFlow", description: "Low-Code/No-Code Orchestration", href: "/products#smartflow" },
-  { name: "SmartSense", description: "Real-Time Anomaly Detection", href: "/products#smartsense" },
-  { name: "SmartTrends", description: "Predictive Analytics & Forecasting", href: "/products#smarttrends" },
-  { name: "SmartDynamics365", description: "AI-Powered Business Automation", href: "/products#smartdynamics" },
-  { name: "SmartCall", description: "Autonomous AI Voice Agent", href: "/products#smartcall" },
+  { name: "SmartAssist", description: "AI-Driven Virtual Assistant", href: "/products/smartassist" },
+  { name: "SmartFlow", description: "Low-Code/No-Code Orchestration", href: "/products/smartflow" },
+  { name: "SmartSense", description: "Real-Time Anomaly Detection", href: "/products/smartsense" },
+  { name: "SmartTrends", description: "Predictive Analytics & Forecasting", href: "/products/smarttrends" },
+  { name: "SmartDynamics365", description: "AI-Powered Business Automation", href: "/products/smartdynamics365" },
+  { name: "SmartCompliance", description: "AI Compliance & Risk Management", href: "/products/smartcompliance" },
+  { name: "SmartCall", description: "Autonomous AI Voice Agent", href: "/products/smartcall" },
+  { name: "SmartTranslation", description: "AI-Powered Language Services", href: "/products/smarttranslation" },
 ];
 
 const services = [
@@ -43,11 +45,11 @@ export function Navbar() {
           <Link to="/" className="flex items-center gap-3">
             <img 
               src={lumayLogo} 
-              alt="LuMay AI Logo" 
+              alt="Lumay AI Logo" 
               className="w-12 h-12 object-contain"
             />
             <span className="font-display font-bold text-xl text-foreground">
-              Lu<span className="text-primary">May</span>
+              Lu<span className="text-primary">may</span>
             </span>
           </Link>
 
@@ -60,7 +62,7 @@ export function Navbar() {
                     Products
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 bg-card border border-border">
+                    <ul className="grid w-[500px] gap-3 p-4 md:grid-cols-2 bg-card border border-border">
                       {products.map((product) => (
                         <li key={product.name}>
                           <NavigationMenuLink asChild>
@@ -187,6 +189,18 @@ export function Navbar() {
               >
                 Products
               </Link>
+              <div className="pl-6 space-y-1">
+                {products.map((product) => (
+                  <Link
+                    key={product.name}
+                    to={product.href}
+                    className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {product.name}
+                  </Link>
+                ))}
+              </div>
               <Link
                 to="/services"
                 className="px-4 py-3 text-foreground hover:bg-secondary rounded-lg transition-colors"
