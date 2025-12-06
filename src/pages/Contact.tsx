@@ -12,18 +12,37 @@ export default function Contact() {
     toast
   } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
+    const email = formData.get('email');
+    const company = formData.get('company');
+    const phone = formData.get('phone');
+    const interest = formData.get('interest');
+    const message = formData.get('message');
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Contact Request from ${firstName} ${lastName} - ${company}`);
+    const body = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n` +
+      `Company: ${company}\n` +
+      `Phone: ${phone || 'Not provided'}\n` +
+      `Area of Interest: ${interest}\n\n` +
+      `Message:\n${message}`
+    );
+    
+    window.location.href = `mailto:sales@lumay.ai?subject=${subject}&body=${body}`;
+    
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours."
+      title: "Opening email client...",
+      description: "Your default email application will open with the message."
     });
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
   };
   return <Layout>
       <Helmet>
@@ -61,46 +80,49 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" required />
+                    <Input id="firstName" name="firstName" placeholder="John" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" required />
+                    <Input id="lastName" name="lastName" placeholder="Doe" required />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="email">Work Email</Label>
-                  <Input id="email" type="email" placeholder="john@company.com" required />
+                  <Input id="email" name="email" type="email" placeholder="john@company.com" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="company">Company</Label>
-                  <Input id="company" placeholder="Your Company" required />
+                  <Input id="company" name="company" placeholder="Your Company" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone (Optional)</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                  <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="interest">Area of Interest</Label>
-                  <select id="interest" className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" required>
+                  <select id="interest" name="interest" className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" required>
                     <option value="">Select an option</option>
-                    <option value="smartassist">SmartAssist</option>
-                    <option value="smartflow">SmartFlow</option>
-                    <option value="smartsense">SmartSense</option>
-                    <option value="smarttrends">SmartTrends</option>
-                    <option value="dynamics365">Dynamics 365 AI</option>
-                    <option value="services">Consulting Services</option>
-                    <option value="other">Other</option>
+                    <option value="SmartAssist">SmartAssist</option>
+                    <option value="SmartFlow">SmartFlow</option>
+                    <option value="SmartSense">SmartSense</option>
+                    <option value="SmartTrends">SmartTrends</option>
+                    <option value="SmartDynamics365">SmartDynamics365</option>
+                    <option value="SmartCompliance">SmartOCG Compliance</option>
+                    <option value="SmartCall">SmartCall</option>
+                    <option value="SmartTranslation">SmartTranslation</option>
+                    <option value="Consulting Services">Consulting Services</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Tell us about your project and goals..." className="min-h-[120px]" required />
+                  <Textarea id="message" name="message" placeholder="Tell us about your project and goals..." className="min-h-[120px]" required />
                 </div>
                 
                 <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
