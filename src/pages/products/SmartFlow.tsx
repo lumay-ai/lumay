@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartFlow",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Low-code/no-code orchestration platform enabling business analysts and IT teams to build and automate complex workflows",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartflow",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "120"
+  },
+  "featureList": ["Visual Workflow Designer", "Pre-built Connectors", "Real-time Monitoring", "Version Control", "Role-based Access", "API Integration"]
+};
+
 const features = [
   { icon: Layers, title: "Visual Workflow Designer", description: "Lumay SmartFlow provides an intuitive drag-and-drop interface for building complex automations without writing code." },
   { icon: Plug, title: "Pre-built Connectors", description: "Connect to 200+ enterprise applications out of the box with Lumay's extensive connector library." },

@@ -10,6 +10,25 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const industriesStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Industries Served by LuMay AI",
+  "description": "LuMay provides enterprise AI solutions across Healthcare, Finance, Manufacturing, Retail, Travel, Education, and ESG industries",
+  "url": "https://lumay-agentic-ai.42web.io/industries",
+  "numberOfItems": 8,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Dynamics 365 AI" },
+    { "@type": "ListItem", "position": 2, "name": "Health & Life Sciences" },
+    { "@type": "ListItem", "position": 3, "name": "Finance" },
+    { "@type": "ListItem", "position": 4, "name": "eCommerce" },
+    { "@type": "ListItem", "position": 5, "name": "ESG & Sustainability" },
+    { "@type": "ListItem", "position": 6, "name": "Manufacturing" },
+    { "@type": "ListItem", "position": 7, "name": "Travel & Hospitality" },
+    { "@type": "ListItem", "position": 8, "name": "Education" }
+  ]
+};
+
 const industries = [
   {
     id: "dynamics365",
@@ -149,14 +168,7 @@ export default function Industries() {
         <meta property="og:description" content="Lumay delivers AI solutions across Healthcare, Finance, eCommerce, Manufacturing, Travel, and Education. Industry-specific expertise for digital transformation." />
         <meta property="og:url" content="https://lumay-agentic-ai.42web.io/industries" />
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Industry AI Solutions",
-            "provider": { "@type": "Organization", "name": "Lumay" },
-            "areaServed": "Worldwide",
-            "description": "AI solutions for Healthcare, Finance, eCommerce, Manufacturing, Travel, and Education industries"
-          })}
+          {JSON.stringify(industriesStructuredData)}
         </script>
       </Helmet>
 

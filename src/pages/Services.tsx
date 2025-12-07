@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const servicesStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Enterprise AI Consulting Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "LuMay",
+    "url": "https://lumay-agentic-ai.42web.io/"
+  },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "LuMay Consulting Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data & AI Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cybersecurity Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Low-Code Platform Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Customer Experience Services" } }
+    ]
+  }
+};
+
 const services = [
   {
     id: "data-ai",
@@ -132,14 +154,7 @@ export default function Services() {
         <meta property="og:description" content="Lumay provides enterprise AI consulting services including Data & AI, Cybersecurity, Low-Code platforms, and Customer Experience." />
         <meta property="og:url" content="https://lumay-agentic-ai.42web.io/services" />
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "AI Consulting",
-            "provider": { "@type": "Organization", "name": "Lumay" },
-            "areaServed": "Worldwide",
-            "description": "Enterprise AI consulting services including Data & AI, Cybersecurity, Low-Code platforms, and Customer Experience"
-          })}
+          {JSON.stringify(servicesStructuredData)}
         </script>
       </Helmet>
 

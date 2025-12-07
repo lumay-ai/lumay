@@ -10,6 +10,31 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productsStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "LuMay Enterprise AI Products",
+  "description": "Comprehensive suite of enterprise AI products including SmartAssist, SmartFlow, SmartSense, SmartTrends, SmartDynamics365, SmartCompliance, SmartCall, and SmartTranslation",
+  "url": "https://lumay-agentic-ai.42web.io/products",
+  "numberOfItems": 8,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "SmartAssist", "url": "https://lumay-agentic-ai.42web.io/products/smartassist" },
+    { "@type": "ListItem", "position": 2, "name": "SmartFlow", "url": "https://lumay-agentic-ai.42web.io/products/smartflow" },
+    { "@type": "ListItem", "position": 3, "name": "SmartSense", "url": "https://lumay-agentic-ai.42web.io/products/smartsense" },
+    { "@type": "ListItem", "position": 4, "name": "SmartTrends", "url": "https://lumay-agentic-ai.42web.io/products/smarttrends" },
+    { "@type": "ListItem", "position": 5, "name": "SmartDynamics365", "url": "https://lumay-agentic-ai.42web.io/products/smartdynamics365" },
+    { "@type": "ListItem", "position": 6, "name": "SmartOCG Compliance", "url": "https://lumay-agentic-ai.42web.io/products/smartcompliance" },
+    { "@type": "ListItem", "position": 7, "name": "SmartCall", "url": "https://lumay-agentic-ai.42web.io/products/smartcall" },
+    { "@type": "ListItem", "position": 8, "name": "SmartTranslation", "url": "https://lumay-agentic-ai.42web.io/products/smarttranslation" }
+  ]
+};
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": []
+};
+
 const products = [
   {
     id: "smartassist",
@@ -167,6 +192,11 @@ export default function Products() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="LuMay AI Products | Enterprise Agentic AI Platform" />
         <meta name="twitter:description" content="8 integrated enterprise AI solutions: SmartAssist, SmartFlow, SmartSense, SmartTrends, SmartDynamics365, SmartCompliance, SmartCall & SmartTranslation." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productsStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}

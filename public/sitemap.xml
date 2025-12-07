@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <!-- Main Pages -->
   <url>
@@ -55,56 +53,56 @@
   
   <!-- Product Pages -->
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-assist</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartassist</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-flow</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartflow</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-sense</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartsense</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-trends</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smarttrends</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-dynamics365</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartdynamics365</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-compliance</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartcompliance</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-call</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smartcall</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://lumay-agentic-ai.42web.io/products/smart-translation</loc>
+    <loc>https://lumay-agentic-ai.42web.io/products/smarttranslation</loc>
     <lastmod>2024-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

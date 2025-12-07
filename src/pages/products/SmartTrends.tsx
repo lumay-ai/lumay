@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartTrends",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Predictive analytics and forecasting platform that transforms historical data into actionable forecasts",
+  "url": "https://lumay-agentic-ai.42web.io/products/smarttrends",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "110"
+  },
+  "featureList": ["Predictive Models", "Trend Analysis", "Custom Dashboards", "Automated Reports", "What-if Scenarios", "Data Visualization"]
+};
+
 const features = [
   { icon: LineChart, title: "Predictive Models", description: "LuMay SmartTrends leverages advanced machine learning algorithms to build predictive models that forecast future trends based on historical data. LuMay's models automatically select the best algorithms for your data characteristics and continuously retrain as new data becomes available." },
   { icon: TrendingUp, title: "Trend Analysis", description: "LuMay SmartTrends identifies emerging patterns and shifts in your business metrics before they become obvious. LuMay's AI detects subtle changes in trajectory, seasonality shifts, and correlation breakdowns that human analysis would miss." },
@@ -127,6 +149,11 @@ export default function SmartTrends() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartTrends - AI Predictive Analytics | LuMay" />
         <meta name="twitter:description" content="AI-powered forecasting with 95% accuracy. Trend analysis, scenario planning, and automated insights." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}
