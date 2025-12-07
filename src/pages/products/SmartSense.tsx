@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartSense",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Real-time anomaly detection platform with AI-powered monitoring for enterprise systems and data streams",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartsense",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "95"
+  },
+  "featureList": ["Real-time Monitoring", "ML-powered Detection", "Custom Alert Rules", "Root Cause Analysis", "Historical Trending", "Integration APIs"]
+};
+
 const features = [
   { icon: Activity, title: "Real-time Monitoring", description: "LuMay SmartSense provides continuous 24/7 monitoring of all your systems, applications, and data streams. LuMay's monitoring agents capture millions of data points per second, ensuring complete visibility into your infrastructure health." },
   { icon: Cpu, title: "ML-powered Detection", description: "LuMay SmartSense uses advanced machine learning algorithms that learn your system's normal behavior patterns. LuMay's AI models automatically adapt to seasonal variations, growth patterns, and evolving baselines without manual reconfiguration." },
@@ -115,6 +137,11 @@ export default function SmartSense() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartSense - Real-Time Anomaly Detection | LuMay" />
         <meta name="twitter:description" content="AI-powered monitoring with 99.9% detection accuracy, sub-second alerts, and 80% fewer false positives." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}

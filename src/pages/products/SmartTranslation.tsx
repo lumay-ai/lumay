@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartTranslation",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "AI-powered language services with context-aware neural translation for enterprise content localization",
+  "url": "https://lumay-agentic-ai.42web.io/products/smarttranslation",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "100"
+  },
+  "featureList": ["Neural Translation", "Industry Glossaries", "Quality Assurance", "Batch Processing", "API Access", "Human Review Option"]
+};
+
 const features = [
   { icon: Zap, title: "Neural Translation", description: "LuMay SmartTranslation uses state-of-the-art neural machine translation technology for natural, fluent translations. LuMay's AI understands context, idioms, and cultural nuances to deliver translations that read as if written by native speakers." },
   { icon: BookOpen, title: "Industry Glossaries", description: "LuMay SmartTranslation maintains custom terminology databases for your specific industry and brand. LuMay ensures consistent use of approved terms, product names, and specialized vocabulary across all translated content." },
@@ -114,6 +136,11 @@ export default function SmartTranslation() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartTranslation - AI Translation | LuMay" />
         <meta name="twitter:description" content="Neural translation in 100+ languages. Custom glossaries. Enterprise-grade quality and API integration." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}

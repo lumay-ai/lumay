@@ -1,8 +1,13 @@
+# Robots.txt for LuMay Enterprise AI Platform
+# https://lumay-agentic-ai.42web.io/
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +15,32 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://lumay-agentic-ai.42web.io/sitemap.xml
+
+# Disallow crawling of non-essential paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow important resources
+Allow: /assets/
+Allow: /images/
+Allow: /*.js$
+Allow: /*.css$

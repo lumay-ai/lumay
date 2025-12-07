@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartDynamics365",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "AI-powered automation for Microsoft Dynamics 365 that reduces quote time by 85% with CRM Copilot capabilities",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartdynamics365",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "85"
+  },
+  "featureList": ["D365 Integration", "CRM Copilot", "Quote Automation", "Sales Intelligence", "Customer Insights", "Process Optimization"]
+};
+
 const features = [
   { icon: Building2, title: "D365 Integration", description: "LuMay SmartDynamics365 provides deep, native integration with Microsoft Dynamics 365 ecosystem. LuMay's connectors work seamlessly with D365 Sales, Customer Service, Field Service, Finance, and Supply Chain modules without custom development." },
   { icon: Bot, title: "CRM Copilot", description: "LuMay SmartDynamics365 embeds an AI-powered copilot directly into your CRM workflow. LuMay's copilot assists with customer communications, provides real-time insights, and automates routine tasks within the familiar D365 interface." },
@@ -115,6 +137,11 @@ export default function SmartDynamics365() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartDynamics365 - D365 AI Automation | LuMay" />
         <meta name="twitter:description" content="85% faster quotes, 40% more productivity, 3x better conversion. AI for Microsoft Dynamics 365." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}

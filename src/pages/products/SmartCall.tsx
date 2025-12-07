@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartCall",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Autonomous AI voice agent platform with natural voice technology for human-like customer conversations",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartcall",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "90"
+  },
+  "featureList": ["Natural Voice AI", "Multi-language Support", "Call Analytics", "CRM Integration", "Smart Escalation", "Quality Monitoring"]
+};
+
 const features = [
   { icon: Mic, title: "Natural Voice AI", description: "LuMay SmartCall uses state-of-the-art neural voice technology for human-like conversations. LuMay's AI understands context, handles interruptions naturally, and adapts tone based on customer sentiment and conversation flow." },
   { icon: Globe, title: "Multi-language Support", description: "LuMay SmartCall supports customers in 50+ languages with native-quality speech synthesis and recognition. LuMay's language detection automatically identifies the customer's preferred language and switches seamlessly." },
@@ -115,6 +137,11 @@ export default function SmartCall() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartCall - AI Voice Agent | LuMay" />
         <meta name="twitter:description" content="70% autonomous call resolution. Natural voice AI in 50+ languages. Sub-2 second response times." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}

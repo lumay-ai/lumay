@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartAssist",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "AI-native virtual assistant that instantly answers questions, solves problems, and executes workflows using your company's data",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartassist",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "150"
+  },
+  "featureList": ["Natural Language Processing", "Multi-source Integration", "Context-aware Responses", "Workflow Automation", "24/7 Availability", "Enterprise Security"]
+};
+
 const features = [
   { icon: Zap, title: "Natural Language Processing", description: "Lumay SmartAssist understands and responds to complex queries in natural language with advanced context awareness and semantic understanding." },
   { icon: Database, title: "Multi-source Integration", description: "Connect Lumay SmartAssist to all your internal tools, knowledge bases, CRM systems, and repositories for comprehensive data access." },

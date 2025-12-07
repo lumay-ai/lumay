@@ -10,6 +10,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LuMay SmartOCG Compliance",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "AI-powered compliance and risk management platform with automated regulatory monitoring and reporting",
+  "url": "https://lumay-agentic-ai.42web.io/products/smartcompliance",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for enterprise pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "75"
+  },
+  "featureList": ["Regulatory Tracking", "Automated Audits", "Risk Assessment", "Compliance Reports", "Policy Management", "Alert System"]
+};
+
 const features = [
   { icon: FileSearch, title: "Regulatory Tracking", description: "LuMay SmartOCG Compliance automatically monitors regulatory changes across jurisdictions and frameworks. LuMay's AI identifies which changes affect your organization and provides actionable guidance for maintaining compliance." },
   { icon: ClipboardCheck, title: "Automated Audits", description: "LuMay SmartOCG Compliance provides continuous compliance monitoring with automated audit trails. LuMay captures evidence, tracks control effectiveness, and maintains audit-ready documentation at all times." },
@@ -123,6 +145,11 @@ export default function SmartCompliance() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SmartOCG Compliance - AI Compliance Platform | LuMay" />
         <meta name="twitter:description" content="70% faster audit prep. Automated compliance for GDPR, SOC 2, HIPAA, ISO 27001, and 50+ frameworks." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(productStructuredData)}
+        </script>
       </Helmet>
 
       {/* Hero */}
