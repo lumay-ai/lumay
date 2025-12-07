@@ -46,10 +46,36 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   };
   return <Layout>
       <Helmet>
-        <title>Contact LuMay - Request Demo & Get in Touch</title>
-        <meta name="description" content="Contact LuMay for AI solutions and enterprise automation. Request a demo, get pricing, or speak with our experts. Phone: +1 (310) 810-1745" />
-        <meta name="keywords" content="contact LuMay, request demo, AI consultation, enterprise AI pricing" />
-        <link rel="canonical" href="https://lumay.ai/contact" />
+        <title>Contact LuMay - Request Demo & Get in Touch | Enterprise AI</title>
+        <meta name="description" content="Contact LuMay for AI solutions and enterprise automation. Request a demo, get pricing, or speak with our experts. Phone: +1 (310) 810-1745. Email: sales@lumay.ai" />
+        <meta name="keywords" content="contact LuMay, request demo, AI consultation, enterprise AI pricing, LuMay demo, AI solutions contact" />
+        <link rel="canonical" href="https://lumay-agentic-ai.42web.io/contact" />
+        <meta property="og:title" content="Contact LuMay - Request Demo & Get in Touch" />
+        <meta property="og:description" content="Contact LuMay for AI solutions and enterprise automation. Request a demo or speak with our experts." />
+        <meta property="og:url" content="https://lumay-agentic-ai.42web.io/contact" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact LuMay",
+            "description": "Contact LuMay for AI solutions and enterprise automation",
+            "url": "https://lumay-agentic-ai.42web.io/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "LuMay",
+              "telephone": "+1-310-810-1745",
+              "email": "sales@lumay.ai",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "8 The Green #20160",
+                "addressLocality": "Dover",
+                "addressRegion": "DE",
+                "postalCode": "19901",
+                "addressCountry": "US"
+              }
+            }
+          }
+        `}</script>
       </Helmet>
 
       {/* Hero */}
