@@ -38,10 +38,29 @@ export default function About() {
   return (
     <Layout>
       <Helmet>
-        <title>About LuMay - Our Mission, Vision & Values</title>
-        <meta name="description" content="Learn about LuMay's mission to build intelligent, scalable, and ethical AI ecosystems. Meet our team of AI experts and discover our approach." />
-        <meta name="keywords" content="about LuMay, AI company, enterprise AI, digital transformation, AI experts" />
-        <link rel="canonical" href="https://lumay.ai/about" />
+        <title>About LuMay - Our Mission, Vision & Values | Enterprise AI Company</title>
+        <meta name="description" content="Learn about LuMay's mission to build intelligent, scalable, and ethical AI ecosystems. Meet our team of 50+ AI experts and discover our customer-first approach." />
+        <meta name="keywords" content="about LuMay, AI company, enterprise AI, digital transformation, AI experts, LuMay team, AI innovation" />
+        <link rel="canonical" href="https://lumay-agentic-ai.42web.io/about" />
+        <meta property="og:title" content="About LuMay - Our Mission, Vision & Values" />
+        <meta property="og:description" content="Learn about LuMay's mission to build intelligent, scalable, and ethical AI ecosystems for enterprises worldwide." />
+        <meta property="og:url" content="https://lumay-agentic-ai.42web.io/about" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About LuMay",
+            "description": "Learn about LuMay's mission to build intelligent, scalable, and ethical AI ecosystems",
+            "url": "https://lumay-agentic-ai.42web.io/about",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "LuMay",
+              "description": "Enterprise Agentic AI Platform",
+              "numberOfEmployees": "50+",
+              "foundingDate": "2020"
+            }
+          }
+        `}</script>
       </Helmet>
 
       {/* Hero */}
