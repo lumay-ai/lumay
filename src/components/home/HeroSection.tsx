@@ -184,6 +184,11 @@ export function HeroSection() {
             <span className="text-gradient">AI Platform</span>
           </h1>
 
+         {/* Tagline */}
+         <p className="text-xl sm:text-2xl md:text-3xl font-medium text-primary/90 mb-6 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+           Autonomous AI Agents for Digital Transformation
+         </p>
+
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             Lumay is an enterprise agentic AI platform that transforms your business with intelligent 
