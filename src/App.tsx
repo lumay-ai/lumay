@@ -24,6 +24,22 @@ import SmartCompliance from "./pages/products/SmartCompliance";
 import SmartCall from "./pages/products/SmartCall";
 import SmartTranslation from "./pages/products/SmartTranslation";
 
+// Service Pages
+import DataAI from "./pages/services/DataAI";
+import Cybersecurity from "./pages/services/Cybersecurity";
+import LowCode from "./pages/services/LowCode";
+import CustomerExperience from "./pages/services/CustomerExperience";
+
+// Industry Pages
+import Dynamics365AI from "./pages/industries/Dynamics365AI";
+import Healthcare from "./pages/industries/Healthcare";
+import Finance from "./pages/industries/Finance";
+import Ecommerce from "./pages/industries/Ecommerce";
+import ESG from "./pages/industries/ESG";
+import Manufacturing from "./pages/industries/Manufacturing";
+import Travel from "./pages/industries/Travel";
+import Education from "./pages/industries/Education";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -45,7 +61,19 @@ const App = () => (
             <Route path="/products/smartcall" element={<SmartCall />} />
             <Route path="/products/smarttranslation" element={<SmartTranslation />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/data-ai" element={<DataAI />} />
+            <Route path="/services/cybersecurity" element={<Cybersecurity />} />
+            <Route path="/services/low-code" element={<LowCode />} />
+            <Route path="/services/customer-experience" element={<CustomerExperience />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/industries/dynamics365" element={<Dynamics365AI />} />
+            <Route path="/industries/healthcare" element={<Healthcare />} />
+            <Route path="/industries/finance" element={<Finance />} />
+            <Route path="/industries/ecommerce" element={<Ecommerce />} />
+            <Route path="/industries/esg" element={<ESG />} />
+            <Route path="/industries/manufacturing" element={<Manufacturing />} />
+            <Route path="/industries/travel" element={<Travel />} />
+            <Route path="/industries/education" element={<Education />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
