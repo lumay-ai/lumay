@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Brain, Cpu, Bot, Zap, Network, Atom, CircuitBoard, Binary, Cog, Database } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import nvidiaLogo from "@/assets/partners/nvidia.webp";
+import microsoftLogo from "@/assets/partners/microsoft.webp";
 
 const floatingIcons = [
   { Icon: Brain, x: 5, y: 12, z: 80, size: 44, speed: 0.5, rotateBase: 15, startX: -100, startY: -50 },
@@ -211,12 +213,17 @@ export function HeroSection() {
           {/* Trust indicators */}
           <div className="mt-16 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-sm text-muted-foreground mb-6">Trusted by Global Enterprises and Fast-Moving Innovators</p>
-            <div className="flex items-center justify-center gap-8 opacity-50">
-              <div className="w-24 h-8 bg-muted rounded" />
-              <div className="w-24 h-8 bg-muted rounded" />
-              <div className="w-24 h-8 bg-muted rounded" />
-              <div className="w-24 h-8 bg-muted rounded hidden sm:block" />
-              <div className="w-24 h-8 bg-muted rounded hidden md:block" />
+            <div className="flex items-center justify-center gap-10 sm:gap-14">
+              <img 
+                src={nvidiaLogo} 
+                alt="NVIDIA" 
+                className="h-6 sm:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+              />
+              <img 
+                src={microsoftLogo} 
+                alt="Microsoft" 
+                className="h-6 sm:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+              />
             </div>
           </div>
         </div>
