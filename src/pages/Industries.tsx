@@ -32,6 +32,7 @@ const industriesStructuredData = {
 const industries = [
   {
     id: "dynamics365",
+    route: "/industries/dynamics365-ai",
     icon: Building2,
     name: "Dynamics 365 AI",
     featured: true,
@@ -42,6 +43,7 @@ const industries = [
   },
   {
     id: "healthcare",
+    route: "/industries/healthcare",
     icon: Heart,
     name: "Health & Life Sciences",
     tagline: "AI-Powered Healthcare Solutions by Lumay",
@@ -51,6 +53,7 @@ const industries = [
   },
   {
     id: "finance",
+    route: "/industries/finance",
     icon: Wallet,
     name: "Finance",
     tagline: "Intelligent Financial Services by Lumay",
@@ -60,6 +63,7 @@ const industries = [
   },
   {
     id: "ecommerce",
+    route: "/industries/ecommerce",
     icon: ShoppingCart,
     name: "eCommerce",
     tagline: "AI-Driven Retail Excellence by Lumay",
@@ -69,6 +73,7 @@ const industries = [
   },
   {
     id: "esg",
+    route: "/industries/esg",
     icon: Leaf,
     name: "ESG & Sustainability",
     tagline: "Sustainable Business Intelligence by Lumay",
@@ -78,6 +83,7 @@ const industries = [
   },
   {
     id: "manufacturing",
+    route: "/industries/manufacturing",
     icon: Factory,
     name: "Manufacturing",
     tagline: "Smart Manufacturing Solutions by Lumay",
@@ -87,6 +93,7 @@ const industries = [
   },
   {
     id: "travel",
+    route: "/industries/travel",
     icon: Plane,
     name: "Travel & Hospitality",
     tagline: "Elevate Guest Experiences with Lumay",
@@ -96,6 +103,7 @@ const industries = [
   },
   {
     id: "education",
+    route: "/industries/education",
     icon: GraduationCap,
     name: "Education",
     tagline: "AI for Learning Excellence by Lumay",
@@ -280,8 +288,8 @@ export default function Industries() {
                     <p className="text-muted-foreground text-sm mb-6">{industry.longDescription}</p>
                     
                     <Button variant="default" asChild>
-                      <Link to="/contact">
-                        Learn More About Lumay
+                      <Link to={industry.route}>
+                        Explore {industry.name}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
