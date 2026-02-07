@@ -35,6 +35,7 @@ const servicesStructuredData = {
 const services = [
   {
     id: "data-ai",
+    route: "/services/data-ai",
     icon: Brain,
     name: "Data & AI Services",
     tagline: "Transform Data into Intelligence with Lumay",
@@ -49,6 +50,7 @@ const services = [
   },
   {
     id: "cybersecurity",
+    route: "/services/cybersecurity",
     icon: Shield,
     name: "Cybersecurity Services",
     tagline: "Protect Your Digital Assets with Lumay",
@@ -63,6 +65,7 @@ const services = [
   },
   {
     id: "lowcode",
+    route: "/services/low-code",
     icon: Blocks,
     name: "Low-Code / No-Code Platform Services",
     tagline: "Accelerate Digital Innovation with Lumay",
@@ -77,6 +80,7 @@ const services = [
   },
   {
     id: "cx",
+    route: "/services/customer-experience",
     icon: Users,
     name: "Customer Experience Services",
     tagline: "Transform Every Touchpoint with Lumay",
@@ -255,8 +259,8 @@ export default function Services() {
                     <p className="text-muted-foreground mb-8">{service.longDescription}</p>
                     
                     <Button variant="hero" asChild>
-                      <Link to="/contact">
-                        Contact Lumay
+                      <Link to={service.route}>
+                        Explore {service.name}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
