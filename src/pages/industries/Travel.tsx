@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { PageBreadcrumb } from "@/components/shared/PageBreadcrumb";
 import { 
   ArrowRight, 
   Plane, 
@@ -183,6 +184,10 @@ export default function Travel() {
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/20" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <PageBreadcrumb items={[
+            { label: "Industries", href: "/industries" },
+            { label: "Travel & Hospitality" }
+          ]} />
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <Plane className="w-4 h-4" />
