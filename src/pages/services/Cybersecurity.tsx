@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Lock, Eye, AlertTriangle, FileCheck, Server, Users, Fingerprint, Network, Bug, ShieldCheck, Key, Scan, MonitorCheck, CloudCog, CheckCircle } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { PageBreadcrumb } from "@/components/shared/PageBreadcrumb";
 import {
   Accordion,
   AccordionContent,
@@ -138,6 +139,10 @@ export default function Cybersecurity() {
       {/* Hero */}
       <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <PageBreadcrumb items={[
+            { label: "Services", href: "/services" },
+            { label: "Cybersecurity" }
+          ]} />
           <div className="max-w-4xl mx-auto text-center">
             <span className="text-primary font-medium text-sm uppercase tracking-wider">LuMay Cybersecurity</span>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-6 text-foreground">
